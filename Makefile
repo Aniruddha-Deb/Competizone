@@ -14,6 +14,8 @@ new:
 
 %.c:
 	$(CC) $(CFLAGS) src/$@ -o $(patsubst %.c,exec/%,$@) $(LDCFLAGS)
+	$(patsubst %.c,exec/%,$@) < in.txt
 
 %.cpp: 
 	$(CPPC) $(CPPFLAGS) src/$@ -o $(patsubst %.cpp,exec/%,$@) $(LDCPPFLAGS)
+	$(patsubst %.cpp,exec/%,$@) < in.txt
