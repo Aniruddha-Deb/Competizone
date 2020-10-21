@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while (t-- > 0) {
+		int l, r;
+		cin >> l >> r;
+		if (r >= 2*l) cout << -1 << endl;
+		else cout << r << endl;
+	}
+	return 0;
+}
