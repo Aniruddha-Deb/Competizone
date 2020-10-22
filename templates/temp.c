@@ -1,5 +1,10 @@
 #include <stdio.h>
+#include <stddef.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <inttypes.h>
+#include <math.h>
+#include <time.h>
 #include <string.h>
 
 int main() {
