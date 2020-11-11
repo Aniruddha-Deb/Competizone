@@ -9,7 +9,7 @@
 
 int main() {
 	int t;
-	scanf("%d\n", t);
+	scanf("%d\n", &t);
 	while (t-- > 0) {
 		// code here
 	}
