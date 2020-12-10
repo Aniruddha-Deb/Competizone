@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const int N = 305;
+string A[N];
+
 int** intMatrix(int n, int m) {
 	int **A = (int**)malloc(sizeof(int*)*n);
 	for (int i=0; i<n; i++) {
@@ -26,7 +29,33 @@ int main() {
 	int t;
 	cin >> t;
 	while (t-- > 0) {
-		// code here
+		int n;
+		cin >> n;
+
+		int sum[3] = {0, 0, 0};
+
+		for (int i=0; i<n; i++) {
+			cin >> A[i];
+			for (int j=0; j<n; j++) {
+				if (A[i][j] == 'X') {
+					sum[(i+j)%3]++;
+				}
+			}
+		}
+
+		int idx = min_element(sum, sum+3) - sum;
+
+		for (int i=0; i<n; i++) {
+			for (int j=0; j<n; j++) {
+				if ((i+j)%3 == idx && A[i][j] == 'X') {
+					A[i][j] = 'O';
+				}
+			}
+		}
+
+		for (int i=0; i<n; i++) {
+			cout << A[i] << endl;
+		}
 	}
 	return 0;
 }
