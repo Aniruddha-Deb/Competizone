@@ -13,20 +13,18 @@ int main() {
 	while (t-- > 0) {
 		int n;
 		cin >> n;
-		// need to reverse this algo lol
-		int *A = (int*)malloc(sizeof(int)*n);
+		string s;
+		cin >> s;
+		int loc = 0;
 		for (int i=0; i<n; i++) {
-			cin >> A[i];
-		}
-		for (int i=0; i<n; i++) {
-			int index = i;
-			for (int j=i+1; j<n; j++) {
-				if (A[j]%A[i] == 0) index = j;
+			if (s[i] == 'b') {
+				s[i] = s[loc];
+				s[loc] = 'b';
+				loc++;
 			}
-			cout << index+1 << " ";
 		}
-		cout << endl;
-		free(A);
+		
+		cout << s << endl;
 	}
 	return 0;
 }

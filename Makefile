@@ -1,8 +1,8 @@
 CC = gcc
 CPPC = g++
 
-CFLAGS = -std=c99 -Wall
-CPPFLAGS = -std=c++14 -Wall
+CFLAGS = -std=c99 -Wall -DDEBUG
+CPPFLAGS = -std=c++14 -Wall -DDEBUG
 
 LDCFLAGS = -lm
 LDCPPFLAGS = -lm
