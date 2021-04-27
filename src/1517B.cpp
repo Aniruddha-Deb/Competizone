@@ -8,12 +8,23 @@ void init() {
 	cin.tie(NULL);
 }
 
+int A[105][105];
+int E[10005];
+
 int main() {
 	init();
 	int t;
 	cin >> t;
 	while (t-- > 0) {
-		// code here
+		int n, m;
+		cin >> n >> m;
+		for (int i=0; i<n; i++) {
+			for (int j=0; j<m; j++) {
+				cin >> A[i][j];
+				E[c] = A[i][j];
+			}
+		}
+		
 	}
 	return 0;
 }
