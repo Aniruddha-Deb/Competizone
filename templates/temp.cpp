@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define MOD 1000000007
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int, int> pi;

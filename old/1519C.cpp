@@ -19,38 +19,42 @@ int main() {
 		int n;
 		cin >> n;
 		vi U(n);
-		map<int, vll> R;
+		vi S(n);
 
 		for (int i=0; i<n; i++) {
 			cin >> U[i];
-			int temp = U[i];
-			if (R.find(temp) == R.end()) {
-				R[temp] = vll();
-			}
+			U[i]--; // zero based indexing
 		}
 
 		for (int i=0; i<n; i++) {
-			ll temp;
-			cin >> temp;
-			R.find(U[i])->second.push_back(temp);
+			cin >> S[i];
 		}
 
-		for (auto p : R) {
-			sort(p.second.begin(), p.second.end(), greater<int>());
-			for (int i=1; i<p.second.size(); i++) {
-				p.second[i] += p.second[i-1];
-			}
-			R[p.first] = p.second;
+		
+		vector<vi> T(n);
+		for (int i=0; i<n; i++) {
+			T[U[i]].push_back(S[i]);
+		}
+		for (int i=0; i<n; i++) {
+			sort(T[i].begin(), T[i].end(), greater<int>());
 		}
 
-		for (int i=1; i<=n; i++) {
-			ll s = 0;
-			for (auto p : R) {
-				vll Q = p.second;
-				int l = Q.size();
-				if (l-l%i > 0) s += Q[(l-l%i)-1];   
+		vector<vector<ll>> P(n, vector<ll>(1,0));
+		for (int i=0; i<n; i++) {
+			for (int x : T[i]) {
+				P[i].push_back(P[i].back()+x);
 			}
-			cout << s << " ";
+		}
+
+		vector<ll> ans(n);
+		for (int i=0; i<n; i++) {
+			for (int k=1; k<=T[i].size(); k++) {
+				ans[k-1] += P[i][T[i].size()/k * k];
+			}
+		}
+
+		for (ll a : ans) {
+			cout << a << " ";
 		}
 		cout << endl;
 
