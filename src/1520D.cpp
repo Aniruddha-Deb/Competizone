@@ -2,7 +2,6 @@
 using namespace std;
 
 #define MOD 1000000007
-#define forn(n) for(int i=0; i<(n); i++)
 
 typedef long long ll;
 typedef vector<int> vi;
@@ -18,7 +17,21 @@ int main() {
 	int t;
 	cin >> t;
 	while (t-- > 0) {
-		// code here
+		int n;
+		cin >> n;
+		map<int,int> sumMap;
+		for (int i=0; i<n; i++) {
+			int temp;
+			cin >> temp;
+			if (!sumMap[temp-i]) sumMap[temp-i] = 1;
+			else sumMap[temp-i]++;
+		}
+		ll ans = 0;
+		for (auto p : sumMap) {
+			ll k = ((ll)p.second);
+			ans += k*(k-1)/2;
+		}
+		cout << ans << endl;
 	}
 	return 0;
 }
