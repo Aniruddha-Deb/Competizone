@@ -18,7 +18,17 @@ int main() {
 	int t;
 	cin >> t;
 	while (t-- > 0) {
-		// code here
+		int n;
+		cin >> n;
+		int mbi = 0;
+		for (int i=31; i>=0; i--) {
+			if (n & (1<<i)) {
+				mbi = i;
+				break;
+			}
+		}
+		cout << ((1<<mbi) - 1) << endl;
+			
 	}
 	return 0;
 }

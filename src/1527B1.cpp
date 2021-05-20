@@ -18,7 +18,18 @@ int main() {
 	int t;
 	cin >> t;
 	while (t-- > 0) {
-		// code here
+		int n;
+		cin >> n;
+		string s;
+		cin >> s;
+
+		int n1 = count(s.begin(), s.end(), '1');
+		if (n == 1 && s[0] == '0') cout << "BOB" << endl;
+		else if (n%2 == 1 && s[n/2] == '0') {
+			if (n1 == n-1) cout << "BOB" << endl;
+			else cout << "ALICE" << endl;
+		}
+		else cout << "BOB" << endl;
 	}
 	return 0;
 }
