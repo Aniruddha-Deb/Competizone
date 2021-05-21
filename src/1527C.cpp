@@ -17,7 +17,8 @@ void init() {
 /*
 Call (i, j) a good pair if a(i) = a(j) and i < j. 
 
-Rather than counting number of good pairs in each subarray, for each good pair count number of subarrays it is a part of.
+Rather than counting number of good pairs in each subarray, for each good pair 
+count number of subarrays it is a part of.
 
 for a good pair (i, j) this (i + 1)*(n - j) (0-indexed)
 
@@ -35,57 +36,35 @@ int main() {
 	int t;
 	cin >> t;
 	while (t-- > 0) {
-		int n;
+		ll n;
 		cin >> n;
 		vi A(n);
-		map<int,int> M;
+		map<int,vi> M;
 		forn(n) {
 			cin >> A[i];
-			M[A[i]] += 1;
+			M[A[i]].push_back(i);
 		}
-		// find and remove elements of frequency 1
-		//for (auto p : M) {
-		//	if (p.second < 2) {
-		//		A.erase(remove(A.begin(), A.end(), p.first), A.end());
-		//	}
-		//}
 
-		if (M.size() == n) {
-			cout << 0 << endl;
-			continue;
-		}
-		
 		ll sum = 0;
-		for (int i=n; i>=2; i--) {
-			map<int,int> TM;
-			for (int j=0; j<i; j++) {
-				TM[A[j]] += 1;
+		for (auto p : M) {
+			vi pos = p.second;
+			int k = pos.size();
+			ll sum_p = n*k*(k-1)/2;
+			ll ij_sum = 0;
+			ll ij_sum_temp = 0;
+			for (int i=0; i<k; i++) {
+				sum_p += n*pos[i]*(k-i-1);
+				sum_p -= ((ll)i)*pos[i];
+				ij_sum += ij_sum_temp*pos[i];
+				ij_sum_temp += pos[i];
 			}
-			//for (auto p : TM) {
-			//	cout << "(" << p.first << "," << p.second << "), ";
-			//}
-			//cout << endl;
-			//ll ssum = 0;
-			for (int j=0; j<=n-i; j++) {
-				//ll sasum = 0;
-				//for (int k=j; k<=j+i-1; k++) {
-				//	cout << A[k] << " ";
-				//}
-				//cout << "| ";
-				// subarray is [j, j+i-1]
-				for (auto p : TM) {
-					if (p.second == 1) continue;
-					sum += (((ll)p.second)*(p.second-1))/2;
-				}
-				TM[A[j]]--;
-				if (j+i < n) TM[A[j+i]]++;
-				//ssum += sasum;
-			}
-			//cout << "Sum = " << ssum << endl;
-			//sum += ssum;
+			sum_p -= ij_sum;
+			//cout << sum_p << ", "; 
+			sum += sum_p;
+			//cout << "Sum after " << p.first << " is " << sum << endl;
 		}
+
 		cout << sum << endl;
-				
 	}
 	return 0;
 }
