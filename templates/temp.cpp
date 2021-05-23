@@ -4,6 +4,12 @@ using namespace std;
 #define MOD 1000000007
 #define forn(n) for(int i=0; i<(n); i++)
 
+#ifdef DEBUG
+#define debug(x) cout << (x);
+#else
+#define debug(x) 
+#endif
+
 typedef long long ll;
 typedef vector<int> vi;
 typedef pair<int, int> pi;

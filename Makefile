@@ -1,13 +1,15 @@
 CC = gcc
 CPPC = g++
 
-CFLAGS = -std=c99 -Wall -DDEBUG
-CPPFLAGS = -std=c++14 -Wall -DDEBUG
+CFLAGS = -std=c99 -Wall
+CPPFLAGS = -std=c++14 -Wall
 
 LDCFLAGS = -lm
 LDCPPFLAGS = -lm
 
 NAME ?= "new"
+
+OJ ?= 0
 
 help:
 	$(info Makefile for Competizone)
@@ -23,11 +25,21 @@ help:
 
 clean:
 	rm exec/*
+	mv src/* old/
+	./archive.sh
 
 %.c:
+ifeq ($(OJ), 0)
+	$(CC) $(CFLAGS) -DDEBUG src/$@ -o $(patsubst %.c,exec/%,$@) $(LDCFLAGS)
+else
 	$(CC) $(CFLAGS) src/$@ -o $(patsubst %.c,exec/%,$@) $(LDCFLAGS)
+endif
 	$(patsubst %.c,exec/%,$@) < in.txt
 
 %.cpp: 
+ifeq ($(OJ), 0)
+	$(CPPC) $(CPPFLAGS) -DDEBUG src/$@ -o $(patsubst %.cpp,exec/%,$@) $(LDCPPFLAGS)
+else
 	$(CPPC) $(CPPFLAGS) src/$@ -o $(patsubst %.cpp,exec/%,$@) $(LDCPPFLAGS)
+endif
 	$(patsubst %.cpp,exec/%,$@) < in.txt
