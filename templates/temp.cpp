@@ -5,7 +5,7 @@ using namespace std;
 #define forn(n) for(int i=0; i<(n); i++)
 
 #ifdef DEBUG
-#define debug(x) cout << (x);
+#define debug(x) cout << x
 #else
 #define debug(x) 
 #endif
