@@ -26,3 +26,4 @@ for q in old/cses/*.cpp; do
 mkdir -p "${q%_*}";
 mv $q "${q%_*}";
 done;
+rm -r old/cses/*.cpp
