@@ -1,0 +1,20 @@
+[
+	{
+		"correct_answers":
+		[
+			"Bob\nAlice\nAlice\nBob"
+		],
+		"test": "4\n1\n4\n12\n69\n",
+		"uncorrect_answers":
+		[
+			"Bob\nAlice\nBob\nBob"
+		]
+	},
+	{
+		"correct_answers":
+		[
+			"Bob\nBob\nBob\nBob\nBob"
+		],
+		"test": "5\n2\n8\n32\n128\n512\n"
+	}
+]
