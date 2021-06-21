@@ -2,11 +2,15 @@
 using namespace std;
 
 #define MOD 1000000007
-#define rep(i, a, b) for (auto i = (a); i < (b); ++i)
-#define per(i, a, b) for (auto i = (b); i-- > (a); )
+#define forn(n) for(int i=0; i<(n); i++)
+
+#ifdef DEBUG
+#define debug(x) cout << x
+#else
+#define debug(x) 
+#endif
 
 typedef long long ll;
-typedef long double ld;
 typedef vector<int> vi;
 typedef pair<int, int> pi;
 
@@ -15,16 +19,10 @@ void init() {
 	cin.tie(NULL);
 }
 
-void solve() {
-	// code here
-}
-
 int main() {
 	init();
-	int t = 1;
-	cin >> t;
-	while (t-- > 0) {
-		solve();
-	}
+	int a, b;
+	cin >> a >> b;
+	cout << ((double)a)/100*b << endl;
 	return 0;
 }

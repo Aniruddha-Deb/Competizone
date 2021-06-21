@@ -16,7 +16,28 @@ void init() {
 }
 
 void solve() {
-	// code here
+	int n, k;
+	cin >> n >> k;
+	string s;
+	cin >> s;
+
+	deque<char> S;
+	S.assign(s.begin(), s.end()); 
+	if (2*k + 1 > n || 2*k == n) {
+		cout << "NO" << endl;
+		return;
+	}
+	if (k == 0) {
+		cout << "YES" << endl;
+		return;
+	}
+
+	while (S.size() > 1 && S.front() == S.back()) {
+		S.pop_front();
+		S.pop_back();
+	}
+	if ((n-S.size())/2 < k) cout << "NO" << endl;
+	else cout << "YES" << endl;
 }
 
 int main() {
