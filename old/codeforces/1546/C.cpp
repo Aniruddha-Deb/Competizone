@@ -24,28 +24,25 @@ void solve() {
 	vi S(A.begin(), A.end());
 	sort(S.begin(), S.end());
 
+	map<int,pi> counts;
 	for (int i=0; i<n; i++) {
-		
+		if (i%2 == 0) counts[A[i]].first += 1;
+		else counts[A[i]].second += 1;
 	}
 
-	for (int i=0; i<n-1; i++) {
-		if (A[i] == A[i+1] && left[i] && left[i+1]) {
-			left[i] = false;
-			left[i+1] = false;
-			i++;
+	for (int i=0; i<n; i++) {
+		if (i%2 == 0) counts[S[i]].first -= 1;
+		else counts[S[i]].second -= 1;
+	}
+
+	for (auto p : counts) {
+		if (p.second.first != 0 || p.second.second != 0) {
+			cout << "NO" << endl;
+			return;
 		}
 	}
+	cout << "YES" << endl;
 
-	bool allright = true;
-	for (bool b : left) {
-		if (b) {
-			allright = false;
-			break;
-		}
-	}
-
-	if (allright) cout << "YES" << endl;
-	else cout << "NO" << endl;
 }
 
 int main() {
