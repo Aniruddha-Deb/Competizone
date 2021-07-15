@@ -37,6 +37,7 @@ ll modInverse(ll a, ll p) {
 ll modBinomial(ll n, ll k, ll p) {
 // calculates C(n,k) mod p (assuming p is prime).
 
+	if (n-k < n/2) k = n-k;
     ll numerator = 1; // n * (n-1) * ... * (n-k+1)
     for (int i=0; i<k; i++) {
         numerator = (numerator * (n-i) ) % p;
@@ -57,7 +58,7 @@ void solve() {
 
 	int d = b-a;
 	ll ans = 0;
-	rep(i,0,6) {
+	rep(i,0,8) {
 		rep(j,0,(int)pow(2,i)) {
 			int k = 0;
 			rep(l,0,i) {
@@ -66,8 +67,7 @@ void solve() {
 			}
 			if (k > n*b || k < n*a) continue;
 			int r = k-n*a;
-			if (r%d == 0) {
-				// cout << k << endl;
+			if (r%d == 0) { // resubmission because in queue, ooof
 				ans = (ans+modBinomial(n,r/d,MOD))%MOD;
 			}
 		}
