@@ -10,6 +10,8 @@ typedef long double ld;
 typedef vector<int> vi;
 typedef pair<int, int> pi;
 
+const ll INF = (ll)1e18;
+
 void init() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -27,15 +29,15 @@ void solve() {
 	}
 
 	// dijkstra on a sparse tree here....
-	priority_queue<pi, vector<pi>, greater<pi>> Q;
-	vi D(n+1,MOD);
+	priority_queue<pair<ll,int>, vector<pair<ll,int>>, greater<pair<ll,int>>> Q;
+	vector<ll> D(n+1,INF);
 	D[1] = 0;
 	Q.push({0,1});
 	vi pred(n+1,-1);
 
 	while (!Q.empty()) {
 		int v = Q.top().second;
-		int d_v = Q.top().first;
+		ll d_v = Q.top().first;
 		Q.pop();
 		if (d_v != D[v]) continue;
 
@@ -51,7 +53,7 @@ void solve() {
 		}
 	}
 
-	if (D[n] == MOD) cout << "-1" << endl;
+	if (D[n] == INF) cout << "-1" << endl;
 	else {
 		vi s;
 		int k = n;
