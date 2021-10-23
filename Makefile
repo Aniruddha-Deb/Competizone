@@ -25,8 +25,7 @@ help:
 
 clean:
 	rm exec/*
-	mv src/* old/
-	./archive.sh
+	rm src/*
 
 %.c:
 ifeq ($(OJ), 0)
