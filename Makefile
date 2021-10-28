@@ -27,6 +27,10 @@ clean:
 	rm exec/*
 	rm src/*
 
+clprc:
+	mv src/*.cpp old/practice/
+	rm -rf src/*
+
 %.c:
 ifeq ($(OJ), 0)
 	$(CC) $(CFLAGS) -DDEBUG src/$@ -o $(patsubst %.c,exec/%,$@) $(LDCFLAGS)
