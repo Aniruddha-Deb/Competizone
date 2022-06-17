@@ -16,12 +16,14 @@ void init() {
 }
 
 void solve() {
-	// code here
+	int n, m;
+	cin >> n >> m;
+	vector<vi> A(n,vi(m,0));
 }
 
 int main() {
 	init();
-	//int t = 1;
+	int t = 1;
 	cin >> t;
 	while (t-- > 0) {
 		solve();

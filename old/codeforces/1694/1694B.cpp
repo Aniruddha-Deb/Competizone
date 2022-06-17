@@ -18,26 +18,26 @@ void init() {
 void solve() {
 	int n;
 	cin >> n;
-	vi ec(n+1,0);
-	for (int i=0; i<n-1; i++) {
-		int u, v;
-		cin >> u >> v;
-		ec[u]++;
-		ec[v]++;
-	}
-	for (int i=1; i<=n; i++) {
-		if (ec[i] == n-1) {
-			cout << "Yes" << endl;
-			return;
+	string s;
+	cin >> s;
+
+	ll a = 1;
+	rep(i,1,n) {
+		if (s[i] != s[i-1]) {
+			a += (i+1);
+		}
+		else {
+			a += 1;
 		}
 	}
-	cout << "No" << endl;
+
+	cout << a << endl;
 }
 
 int main() {
 	init();
 	int t = 1;
-	//cin >> t;
+	cin >> t;
 	while (t-- > 0) {
 		solve();
 	}
