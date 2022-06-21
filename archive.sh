@@ -1,4 +1,5 @@
-mv src/* old
+mv src/*.cpp old
+mv src/*.py old
 
 mv old/[0-9]* old/codeforces/
 mv old/[A-Z]* old/codechef/
