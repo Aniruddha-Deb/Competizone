@@ -1,6 +1,8 @@
 mv src/*.cpp old
 mv src/*.py old
 
+rm src/*
+
 mv old/[0-9]* old/codeforces/
 mv old/[A-Z]* old/codechef/
 mv old/abc* old/atcoder/
