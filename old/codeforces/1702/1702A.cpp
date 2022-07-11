@@ -13,20 +13,22 @@ typedef vector<long long> vll;
 typedef pair<long long, long long> pll;
 
 void init() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 }
 
 void solve() {
-    // code here
+	int m;
+	cin >> m;
+	cout << (int)(m - pow(10,(int)log10(m))) << endl;
 }
 
 int main() {
-    init();
-    int t = 1;
-    cin >> t;
-    while (t-- > 0) {
-        solve();
-    }
-    return 0;
+	init();
+	int t = 1;
+	cin >> t;
+	while (t-- > 0) {
+		solve();
+	}
+	return 0;
 }
