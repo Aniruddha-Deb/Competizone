@@ -24,8 +24,7 @@ help:
 	$(info do make <program name> to make the given program (program in src folder))
 
 clean:
-	rm exec/*
-	rm src/*
+	rm bin/*
 
 clprc:
 	mv src/*.cpp old/practice/
