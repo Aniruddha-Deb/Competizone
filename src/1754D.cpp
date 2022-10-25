@@ -2,6 +2,7 @@
 using namespace std;
 
 #define MOD 1000000007
+#define MOD2 1000000087
 #define rep(i, a, b) for (auto i = (a); i < (b); i++)
 #define per(i, b, a) for (auto i = (b); i >= (a); i--)
 
@@ -17,49 +18,56 @@ void init() {
     cin.tie(NULL);
 }
 
+int mypow(ll a,ll b,ll mod){
+    if(b==0){
+        return 1;
+    }
+    if(b==1){
+        return a%mod;
+    }
+    ll val = mypow(a,b/2,mod);
+    val = (val*val)%mod;
+    if(b&1){
+        return (val*a)%mod;
+    }
+    else{
+        return val%mod;
+    }
+}
+
 void solve() {
-    int n;
+    ll n;
     ll x;
     cin >> n >> x;
-    vll A;
-    ll mi = LLONG_MAX, mx=-1;
+    vll A(n);
     rep(i,0,n) {
-        ll t;
-        cin >> t;
-        if (t >= x) continue;
-        mi = min(t, mi);
-        mx = max(t, mx);
+        cin >> A[i];
     }
-    ll fact_mx = 1;
-    rep(i,mx+1,x+1) {
-        fact_mx *= i;
-        if (fact_mx > n) {
-            cout << "No" << endl;
-            return;
-        }
+    vll fact1(x+10);
+    vll fact2(x+10);
+    fact1[0] = 1;
+    fact2[0] = 1;
+    rep(i,1,x+2) {
+        fact1[i] = (fact1[i-1]*i)%MOD;
+        fact2[i] = (fact2[i-1]*i)%MOD2;
+    }
+    
+    ll sum1 = 0;
+    ll sum2 = 0;
+    rep(i,0,n) {
+        sum1 = (sum1+fact1[A[i]])%MOD;
+        sum2 = (sum2+fact2[A[i]])%MOD2;
     }
 
-    // ignore the ones larger than x.
+    ll val1 = (sum1*mypow(fact1[x],MOD-2,MOD))%MOD;
+    ll val2 = (sum2*mypow(fact2[x],MOD2-2,MOD2))%MOD2;
 
-    vll fact_modx(500005);
-    rep(i,0,n) {
-        A[i] -= mi;
-        cout << A[i] << " ";
+    if (val2 <= n) {
+        cout << "Yes" << endl;
     }
-    cout << endl;
-    fact_modx[0] = 1;
-    cout << fact_modx[0] << " ";
-    rep(i,1,max(mi+1,mx-mi+1)) {
-        fact_modx[i] = (fact_modx[i-1] * (ll)i)%x;
-        cout << fact_modx[i] << " ";
+    else {
+        cout << "No" << endl;
     }
-    cout << endl;
-    ll s = 0;
-    rep(i,0,n) {
-        cout << "Adding " << A[i] << "! = " << fact_modx[A[i]] << " to ans" << endl;
-        s = (s+fact_modx[A[i]])%x;
-    }
-    cout << (((fact_modx[mi] * s)%x == 0) ? "Yes" : "No") << endl;
 }
 
 int main() {
