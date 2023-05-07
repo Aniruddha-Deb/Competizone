@@ -30,3 +30,6 @@ mkdir -p "${q%_*}";
 mv $q "${q%_*}";
 done;
 rm -r old/cses/*.cpp
+
+cp compile_flags_src.txt src/compile_flags.txt
+
